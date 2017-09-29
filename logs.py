@@ -44,7 +44,7 @@ FROM error_requests, ok_requests \
 WHERE error_requests.day = ok_requests.day \
 AND ok_requests.num != 0 \
 ) \
-SELECT error_rate.day, ROUND(error_rate.rate::numeric * 100, 1) || '%' AS rate \
+SELECT error_rate.day, ROUND(error_rate.rate::numeric * 100, 1) || '%' AS rate\
 FROM error_rate \
 WHERE rate > .01;")
 
