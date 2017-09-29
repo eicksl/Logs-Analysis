@@ -11,12 +11,12 @@ steps after installation:
 
 * Download the data [here](https://d17h27t6h515a5.cloudfront.net/topher/2016/August/57b5f748_newsdata/newsdata.zip)
 
-* Move both the data and the logs directory into ```FSND-Virtual-Machine/vagrant```
+* Move both the data and the Logs-Analysis-master directory into ```FSND-Virtual-Machine/vagrant```
 
 * Navigate to the above directory on the command line and run ```vagrant up```
 to connect to the virtual machine, then log in with ```vagrant ssh```
 
-* Move to the logs directory with ```cd vagrant/logs```, then run
-```python3 logs.py``` to launch the analysis tool
+* Move to the Logs-Analysis-master directory with ```cd vagrant/logs-analysis-master```, then
+run ```python3 logs.py``` to launch the analysis tool
 
 For inquiries, post an issue on the [github repository page](https://github.com/eicksl/Logs-Analysis/issues).
