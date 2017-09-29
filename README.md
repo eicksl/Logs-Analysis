@@ -1,5 +1,8 @@
 # Logs Analysis
 
+This tool uses psycopg2 to connect to a PostreSQL database and perform various
+queries to answer certain questions about the data.
+
 This tool uses Vagrant. Download it from
 [vagrantup.com](https://www.vagrantup.com/downloads.html), then follow these
 steps after installation:
