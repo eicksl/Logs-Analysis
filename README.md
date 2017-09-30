@@ -16,7 +16,8 @@ steps after installation:
 * Navigate to the above directory on the command line and run ```vagrant up```
 to connect to the virtual machine, then log in with ```vagrant ssh```
 
-* Move to the Logs-Analysis-master directory with ```cd vagrant/logs-analysis-master```, then
-run ```python3 logs.py``` to launch the analysis tool
+* Move to the vagrant directory with ```cd /vagrant```, then run ```pqsl -d news -f newsdata.sql```
+
+* Move to ```cd /logs-analysis-master```, then run ```python3 logs.py``` to launch the analysis tool
 
 For inquiries, post an issue on the [github repository page](https://github.com/eicksl/Logs-Analysis/issues).
