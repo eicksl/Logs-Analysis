@@ -18,6 +18,6 @@ to connect to the virtual machine, then log in with ```vagrant ssh```
 
 * Move to the vagrant directory with ```cd /vagrant```, then run ```pqsl -d news -f newsdata.sql```
 
-* Move to ```cd /logs-analysis-master```, then run ```python3 logs.py``` to launch the analysis tool
+* Move to ```cd logs-analysis-master```, then run ```python3 logs.py``` to launch the analysis tool
 
 For inquiries, post an issue on the [github repository page](https://github.com/eicksl/Logs-Analysis/issues).
