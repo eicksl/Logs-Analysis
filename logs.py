@@ -58,7 +58,7 @@ def run_queries(**kwargs):
 def print_data():
     '''Prints output of queries'''
     output = run_queries(top_articles=top_articles, top_authors=top_authors,
-                                                    high_errors=high_errors)
+                         high_errors=high_errors)
     print("\n\n\n")
     print("Top three popular articles:\n")
     for i in output['top_articles']:
