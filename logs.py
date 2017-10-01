@@ -46,8 +46,7 @@ def connect(db_name="news"):
 
 
 def run_queries(**kwargs):
-    '''Connects to a database and runs queries specified in keyword
-    arguments'''
+    '''Runs queries specified in keyword arguments'''
     db, c = connect()
     for query in kwargs:
         c.execute(kwargs[query])
@@ -57,7 +56,7 @@ def run_queries(**kwargs):
 
 
 def print_data():
-    '''Prints the output of queries'''
+    '''Prints output of queries'''
     output = run_queries(top_articles=top_articles, top_authors=top_authors,
                                                     high_errors=high_errors)
     print("\n\n\n")
