@@ -36,7 +36,7 @@ where err / total > .01;
 
 
 def connect(db_name="news"):
-    '''Connects to a database'''
+    '''Connects to database and returns database object and its cursor'''
     try:
         db = psycopg2.connect(database=db_name)
         c = db.cursor()
@@ -46,7 +46,8 @@ def connect(db_name="news"):
 
 
 def run_queries(**kwargs):
-    '''Runs queries specified in keyword arguments'''
+    '''Runs queries specified in kwargs and returns a dict of query output
+    for kwargs'''
     db, c = connect()
     for query in kwargs:
         c.execute(kwargs[query])
