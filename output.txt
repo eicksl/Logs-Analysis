@@ -15,4 +15,4 @@ Markoff Chaney -- 84557 views
 
 Days when error rate of requests exceeded 1%:
 
-2016-07-17 -- 2.26% errors
+July 17, 2016 -- 2.26% errors
