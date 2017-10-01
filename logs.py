@@ -5,48 +5,40 @@ import psycopg2
 db = psycopg2.connect(database="news")
 c = db.cursor()
 
-c.execute("\
-SELECT articles.title, count(*) AS num \
-FROM log, articles \
-WHERE log.path = '/article/' || articles.slug \
-GROUP BY articles.title \
-ORDER BY num DESC \
-LIMIT 3;")
+c.execute("""
+SELECT articles.title, count(*) as num
+from log, articles
+where log.path = '/article/' || articles.slug
+group by articles.title
+order by num desc
+limit 3;
+""")
 
 top_articles = c.fetchall()
 
-c.execute("\
-SELECT authors.name, count(*) AS num \
-FROM authors, articles, log \
-WHERE log.path = '/article/' || articles.slug \
-AND authors.id = articles.author \
-GROUP BY authors.name \
-ORDER BY num DESC;")
+c.execute("""
+SELECT authors.name, count(*) as num
+from authors, articles, log
+where log.path = '/article/' || articles.slug
+and authors.id = articles.author
+group by authors.name
+order by num desc;
+""")
 
 top_authors = c.fetchall()
 
-c.execute("\
-WITH error_requests AS ( \
-SELECT time::date AS day, count(*) AS num \
-FROM log \
-WHERE status = '404 NOT FOUND' \
-GROUP BY day \
-ORDER BY day ASC \
-), all_requests AS ( \
-SELECT time::date AS day, count(*) AS num \
-FROM log \
-GROUP BY day \
-ORDER BY day ASC \
-), error_rate AS ( \
-SELECT all_requests.day, error_requests.num / all_requests.num::float AS rate \
-FROM error_requests, all_requests \
-WHERE error_requests.day = all_requests.day \
-AND all_requests.num != 0 \
-) \
-SELECT error_rate.day, \
-                    ROUND(error_rate.rate::numeric * 100, 2) || '%' AS rate \
-FROM error_rate \
-WHERE rate > .01;")
+c.execute("""
+WITH errors as (
+select time::date as day, count(*) as total,
+       sum((log.status != '200 OK')::int)::float as err
+from log
+group by day
+)
+select to_char(day, 'FMMonth FMDD, YYYY'),
+       round((err/total*100)::numeric, 2) || '%' as error_rate
+from errors
+where err / total > .01;
+""")
 
 high_errors = c.fetchall()
 
